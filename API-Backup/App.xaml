@@ -5,6 +5,10 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <SolidColorBrush x:Key="TabControlNormalBorderBrush" Color="#8C8E94"/>
+        <SolidColorBrush x:Key="OrangeFill" Color="#FFEE8740"/>
+        <SolidColorBrush x:Key="HeaderTextColor" Color="White"/>
+        <SolidColorBrush x:Key="HeaderTextColor_NotSelected" Color="#B3FFFFFF"/>
+        
         <Style x:Key="MainMenuTabs" TargetType="{x:Type TabControl}">
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
             <Setter Property="Padding" Value="4,4,4,4"/>
@@ -73,23 +77,23 @@
             <Setter Property="Template">
                 
                 <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type TabItem}">
+                    <ControlTemplate x:Name="testme" TargetType="{x:Type TabItem}">
                         <Grid x:Name="Root">
                             <Border x:Name="Border" Margin="0,0,-4,0">
                                 <ContentPresenter x:Name="ContentSite"
-                              VerticalAlignment="Center"
-                              HorizontalAlignment="Center"
-                              ContentSource="Header"
-                              Margin="12,2,12,2"
-                              RecognizesAccessKey="True" />
+                                  VerticalAlignment="Center"
+                                  HorizontalAlignment="Center"
+                                  ContentSource="Header"
+                                  Margin="12,2,12,2"
+                                  RecognizesAccessKey="True">
+                                </ContentPresenter>
 
                             </Border>
-                            
                         </Grid>
                         <ControlTemplate.Triggers>
                             <!-- Selected color -->
                             <Trigger Property="IsSelected" Value="True">
-                                <!-- <Setter Property="TextElement.Foreground" TargetName="ContentSite" Value="White"/>-->
+                                <!--<Setter Property="TextElement.Background" TargetName="HeaderTextStyle" Value="Green"/>-->
                                 <Setter Property="Panel.ZIndex" Value="100" />
                                 <Setter TargetName="Border" Property="Background" Value="#FFEF690D" />
                             </Trigger>
@@ -112,6 +116,15 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+        </Style>
+        <Style x:Key="HeaderTextStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="TextWrapping" Value="NoWrap"/>
+            <Setter Property="TextTrimming" Value="None"/>
+            <Style.Triggers><!--
+                <DataTrigger Binding="{Binding IsSelected, XPath=}">
+                    <Setter Property="Background" Value="red"/>
+                </DataTrigger>-->
+            </Style.Triggers>
         </Style>
     </Application.Resources>
 </Application>

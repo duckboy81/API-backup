@@ -14,22 +14,23 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Rectangle x:Name="OrangeTopBar" Fill="#FFEE8740" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
+        
+        <Rectangle x:Name="OrangeTopBar" Fill="{StaticResource OrangeFill}" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
         <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="311" Margin="0" VerticalAlignment="Top" Width="717" Background="#FFF9F9F9" Style="{DynamicResource MainMenuTabs}">
-            <TabItem Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+            <TabItem x:Name="MainTab" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
                 <TabItem.Header>
                     <Grid x:Name="Main" Margin="0" Height="52" Width="166">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="52"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock x:Name="textBlock" Margin="0,5,0,3" TextWrapping="Wrap" Foreground="White" FontSize="36" Grid.Column="1" d:LayoutOverrides="Width" VerticalAlignment="Bottom"><Run Text="Main"/></TextBlock>
+                        <TextBlock x:Name="textBlock" Margin="0,5,0,3" TextWrapping="Wrap" Foreground="White" FontSize="36" Grid.Column="1" d:LayoutOverrides="Width" VerticalAlignment="Bottom" Style="{DynamicResource HeaderTextStyle}"><Run Text="Main"/></TextBlock>
                         <Image x:Name="icons_server_32_png" Margin="10,0,10,10" Source="icons/server-32.png" Stretch="Fill" Height="32" VerticalAlignment="Bottom"/>
                     </Grid>
                 </TabItem.Header>
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
-            <TabItem>
+            <TabItem x:Name="BackupsTab">
                 <TabItem.Header>
                     <Grid x:Name="Backups" Margin="0" Height="52" Width="216">
                         <Grid.ColumnDefinitions>
@@ -42,14 +43,27 @@
                 </TabItem.Header>
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
-            <TabItem HorizontalAlignment="Left" Height="56" VerticalAlignment="Top" Width="211">
+            <TabItem HorizontalAlignment="Left" Height="56" VerticalAlignment="Top" Width="211" x:Name="SettingsTab">
                 <TabItem.Header>
                     <Grid x:Name="Settings" Margin="0" Height="52" Width="240">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="52"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock x:Name="textBlock2" Margin="0,5,0,3" TextWrapping="Wrap" Foreground="White" FontSize="36" Grid.Column="1" d:LayoutOverrides="Width" VerticalAlignment="Bottom" Text="Settings"/>
+                        <!--<TextBlock x:Name="textBlock2" Margin="0,5,0,3" TextWrapping="Wrap" Foreground="White" FontSize="36" Grid.Column="1" d:LayoutOverrides="Width" VerticalAlignment="Bottom" Text="{Binding SelectedIndex, ElementName=tabControl}"/>-->
+                        <TextBlock x:Name="textBlock2" Margin="0,5,0,3" TextWrapping="Wrap" FontSize="36" Grid.Column="1" d:LayoutOverrides="Width" VerticalAlignment="Bottom" Text="Settings">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Foreground" Value="{StaticResource HeaderTextColor_NotSelected}" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsSelected, ElementName=SettingsTab}" Value="true">
+                                            <Setter Property="Foreground" Value="{StaticResource HeaderTextColor}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
                         <Image x:Name="icons_server_32_png2" Margin="10,0,10,10" Source="icons/settings.png" Stretch="Fill" Height="32" VerticalAlignment="Bottom"/>
                     </Grid>
                 </TabItem.Header>
