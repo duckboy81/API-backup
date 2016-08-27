@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:API_Backup"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="DuckPortal" Height="350" Width="725" BorderThickness="0" ResizeMode="CanMinimize" Icon="DuckPortal-app-logo-256.ico" WindowStartupLocation="CenterScreen">
+    <Grid RenderTransformOrigin="0.5,0.5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
     </Grid>
 </Window>

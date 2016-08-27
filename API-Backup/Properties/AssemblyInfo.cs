@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("API-Backup")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Duck Portal")]
 [assembly: AssemblyProduct("API-Backup")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyCopyright("Copyright Jean-Luc Duckworth ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
