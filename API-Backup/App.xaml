@@ -8,7 +8,7 @@
         <SolidColorBrush x:Key="OrangeFill" Color="#FFEE8740"/>
         <SolidColorBrush x:Key="HeaderTextColor" Color="White"/>
         <SolidColorBrush x:Key="HeaderTextColor_NotSelected" Color="#B3FFFFFF"/>
-        
+
         <Style x:Key="MainMenuTabs" TargetType="{x:Type TabControl}">
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
             <Setter Property="Padding" Value="4,4,4,4"/>
@@ -71,6 +71,29 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            
+            <!-- Target all children TextBlocks -->
+            <Style.Resources>
+                <Style TargetType="{x:Type Image}">
+                    <Setter Property="Opacity" Value="0.7" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}" Value="true">
+                            <Setter Property="Opacity" Value="1.0" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="TextWrapping" Value="NoWrap"/>
+                    <Setter Property="TextTrimming" Value="None"/>
+                    <Setter Property="Foreground" Value="{StaticResource HeaderTextColor}" />
+                    <Setter Property="Opacity" Value="0.7" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}" Value="true">
+                            <Setter Property="Opacity" Value="1.0" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Style.Resources>
         </Style>
         <Style TargetType="{x:Type TabItem}">
             
@@ -120,10 +143,12 @@
         <Style x:Key="HeaderTextStyle" TargetType="{x:Type TextBlock}">
             <Setter Property="TextWrapping" Value="NoWrap"/>
             <Setter Property="TextTrimming" Value="None"/>
-            <Style.Triggers><!--
-                <DataTrigger Binding="{Binding IsSelected, XPath=}">
-                    <Setter Property="Background" Value="red"/>
-                </DataTrigger>-->
+            <Setter Property="Foreground" Value="{StaticResource HeaderTextColor}" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}" Value="true">
+                    <Setter Property="Opacity" Value="0.5" />
+                    <!--<Setter Property="Foreground" Value="{StaticResource HeaderTextColor}"/>-->
+                </DataTrigger>
             </Style.Triggers>
         </Style>
     </Application.Resources>
