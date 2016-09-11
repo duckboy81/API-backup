@@ -72,26 +72,30 @@
                 </Setter.Value>
             </Setter>
             
-            <!-- Target all children TextBlocks -->
+            <!-- Target all TabHeaders -->
             <Style.Resources>
-                <Style TargetType="{x:Type Image}">
-                    <Setter Property="Opacity" Value="0.7" />
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}" Value="true">
-                            <Setter Property="Opacity" Value="1.0" />
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-                <Style TargetType="{x:Type TextBlock}">
-                    <Setter Property="TextWrapping" Value="NoWrap"/>
-                    <Setter Property="TextTrimming" Value="None"/>
-                    <Setter Property="Foreground" Value="{StaticResource HeaderTextColor}" />
-                    <Setter Property="Opacity" Value="0.7" />
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}" Value="true">
-                            <Setter Property="Opacity" Value="1.0" />
-                        </DataTrigger>
-                    </Style.Triggers>
+                <Style x:Key="TabHeaders" TargetType="Grid">
+                    <Style.Resources>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Opacity" Value="0.7" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}" Value="true">
+                                    <Setter Property="Opacity" Value="1.0" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="TextWrapping" Value="NoWrap"/>
+                            <Setter Property="TextTrimming" Value="None"/>
+                            <Setter Property="Foreground" Value="{StaticResource HeaderTextColor}" />
+                            <Setter Property="Opacity" Value="0.7" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}" Value="true">
+                                    <Setter Property="Opacity" Value="1.0" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Style.Resources>
                 </Style>
             </Style.Resources>
         </Style>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:API_Backup"
         mc:Ignorable="d"
-        Title="DUCK PORTAL - Backup Manager" Height="350" Width="725" BorderThickness="0,0,2,0" ResizeMode="CanMinimize" Icon="icons/DuckPortal-app-logo-256-improved.png" WindowStartupLocation="CenterScreen" MinWidth="725" MinHeight="350" MaxWidth="725" MaxHeight="350" ScrollViewer.VerticalScrollBarVisibility="Disabled" Background="#FF7A7A7A">
+        Title="Backup Manager - Duck Portal" Height="350" Width="725" BorderThickness="0,0,2,0" ResizeMode="CanMinimize" Icon="icons/DuckPortal-app-logo-256-improved.png" WindowStartupLocation="CenterScreen" MinWidth="725" MinHeight="350" MaxWidth="725" MaxHeight="350" ScrollViewer.VerticalScrollBarVisibility="Disabled" Background="#FF7A7A7A">
     <!-- Most icons provided by: Icons made by Gregor Cresnar from www.flaticon.com is licensed by CC 3.0 BY -->
     <Grid RenderTransformOrigin="0.5,0.5">
         <Grid.RowDefinitions>
@@ -19,7 +19,7 @@
         <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="311" Margin="0" VerticalAlignment="Top" Width="717" Background="#FFF9F9F9" Style="{DynamicResource MainMenuTabs}">
             <TabItem x:Name="MainTab" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
                 <TabItem.Header>
-                    <Grid x:Name="Main" Margin="0" Height="52" Width="166">
+                    <Grid x:Name="Main" Margin="0" Height="52" Width="166" Style="{DynamicResource TabHeaders}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="52"/>
                             <ColumnDefinition/>
@@ -34,7 +34,7 @@
             </TabItem>
             <TabItem>
                 <TabItem.Header>
-                    <Grid x:Name="Backups" Margin="0" Height="52" Width="216">
+                    <Grid x:Name="Backups" Margin="0" Height="52" Width="216" Style="{DynamicResource TabHeaders}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="52"/>
                             <ColumnDefinition/>
@@ -49,7 +49,7 @@
             </TabItem>
             <TabItem HorizontalAlignment="Left" Height="56" VerticalAlignment="Top" Width="211">
                 <TabItem.Header>
-                    <Grid x:Name="Settings" Margin="0" Height="52" Width="240">
+                    <Grid x:Name="Settings" Margin="0" Height="52" Width="240" Style="{DynamicResource TabHeaders}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="52"/>
                             <ColumnDefinition/>
