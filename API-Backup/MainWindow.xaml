@@ -14,7 +14,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        
+
         <Rectangle x:Name="OrangeTopBar" Fill="{StaticResource OrangeFill}" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
         <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="311" Margin="0" VerticalAlignment="Top" Width="717" Background="#FFF9F9F9" Style="{DynamicResource MainMenuTabs}">
             <TabItem x:Name="MainTab" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
@@ -28,8 +28,42 @@
                         <Image x:Name="icons_server_32_png" Margin="10,0,10,10" Source="icons/server-32.png" Stretch="Fill" Height="32" VerticalAlignment="Bottom"/>
                     </Grid>
                 </TabItem.Header>
-                <Grid Background="#FFE5E5E5">
-                    <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="193,47,0,0" Text="MAIN!" VerticalAlignment="Top" FontSize="45" />
+                <Grid Background="White">
+                    <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="10,10,0,0" Text="Worker Status" VerticalAlignment="Top" FontSize="24" Foreground="Black" FontWeight="Bold" />
+                    <TextBlock x:Name="label_workerstatus" HorizontalAlignment="Left" Margin="191,10,0,0" Text="Idle" VerticalAlignment="Top" FontSize="24" Foreground="Black" />
+                    <ProgressBar x:Name="bar_workerProgress" HorizontalAlignment="Left" Height="19" Margin="10,66,0,0" VerticalAlignment="Top" Width="444"/>
+                    <Button x:Name="btn_checkForNew" Content="Check For New Backup" HorizontalAlignment="Left" Height="26" Margin="536,27,0,0" VerticalAlignment="Top" Width="152"/>
+                    <Button x:Name="btn_checkForNew_Copy" Content="Cancel Work" HorizontalAlignment="Left" Height="26" Margin="536,59,0,0" VerticalAlignment="Top" Width="152" IsCancel="True"/>
+                    <Rectangle HorizontalAlignment="Left" Height="704" Margin="352,-249,0,-212" VerticalAlignment="Top" Width="3" RenderTransformOrigin="0.5,0.5">
+                        <Rectangle.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="90"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Rectangle.RenderTransform>
+                        <Rectangle.Fill>
+                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE86911" Offset="0.35"/>
+                                <GradientStop Offset="1"/>
+                                <GradientStop/>
+                                <GradientStop Color="#FBE86B14" Offset="0.65"/>
+                            </LinearGradientBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <TextBlock x:Name="textBlock3_Copy2" HorizontalAlignment="Left" Margin="10,117,0,0" Text="Summary" VerticalAlignment="Top" FontSize="24" Foreground="Black" FontWeight="Bold" />
+                    <TextBlock x:Name="textBlock3_Copy3" HorizontalAlignment="Left" Margin="20,154,0,0" Text="Last successful download" VerticalAlignment="Top" FontSize="18" Foreground="Black" />
+                    <TextBlock x:Name="textBlock3_Copy4" HorizontalAlignment="Left" Margin="20,183,0,0" Text="Avg. download speed" VerticalAlignment="Top" FontSize="18" Foreground="Black" />
+                    <TextBlock x:Name="textBlock3_Copy5" HorizontalAlignment="Left" Margin="20,212,0,0" Text="Time to download" VerticalAlignment="Top" FontSize="18" Foreground="Black" />
+                    <TextBlock x:Name="textBlock3_Copy6" HorizontalAlignment="Left" Margin="395,183,0,0" Text="Num. of backups saved" VerticalAlignment="Top" FontSize="18" Foreground="Black" />
+                    <TextBlock x:Name="textBlock3_Copy7" HorizontalAlignment="Left" Margin="395,212,0,0" Text="Total size of backups" VerticalAlignment="Top" FontSize="18" Foreground="Black" />
+                    <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="307,117,0,0" TextWrapping="Wrap" Text="All System Normal" VerticalAlignment="Top" Background="#FF009707" Foreground="White" Height="32" Width="381" TextAlignment="Center" FontSize="22"/>
+                    <TextBlock x:Name="textBlock3_Copy8" HorizontalAlignment="Left" Margin="237,154,0,0" Text="Jun 15, 2017" VerticalAlignment="Top" FontSize="18" Foreground="Black" Width="141" TextDecorations="Underline" />
+                    <TextBlock x:Name="textBlock3_Copy9" HorizontalAlignment="Left" Margin="237,183,0,0" Text="800 kbps" VerticalAlignment="Top" FontSize="18" Foreground="Black" Width="141" TextDecorations="Underline" />
+                    <TextBlock x:Name="textBlock3_Copy10" HorizontalAlignment="Left" Margin="237,212,0,0" Text="32 minutes" VerticalAlignment="Top" FontSize="18" Foreground="Black" Width="141" TextDecorations="Underline" />
+                    <TextBlock x:Name="textBlock3_Copy11" HorizontalAlignment="Left" Margin="598,183,0,0" Text="20" VerticalAlignment="Top" FontSize="18" Foreground="Black" Width="63" TextDecorations="Underline" />
+                    <TextBlock x:Name="textBlock3_Copy12" HorizontalAlignment="Left" Margin="598,212,0,0" Text="46GB" VerticalAlignment="Top" FontSize="18" Foreground="Black" Width="63" TextDecorations="Underline" />
                 </Grid>
             </TabItem>
             <TabItem>
@@ -43,8 +77,20 @@
                         <Image x:Name="icons_server_32_png1" Margin="10,0,10,10" Source="icons/magnifier-tool.png" Stretch="Fill" Height="32" VerticalAlignment="Bottom"/>
                     </Grid>
                 </TabItem.Header>
-                <Grid Background="#FFE5E5E5">
-                    <TextBlock x:Name="textBlock3_Copy" HorizontalAlignment="Left" Margin="193,47,0,0" Text="Back" VerticalAlignment="Top" FontSize="45" />
+                <Grid Background="White">
+                    <ListView x:Name="listView" HorizontalAlignment="Left" Height="174" Margin="0,33,0,0" VerticalAlignment="Top" Width="661">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="0,5,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="567"/>
+                    <Button x:Name="button" Content="Build Local Server" HorizontalAlignment="Left" Margin="482,221,0,0" VerticalAlignment="Top" Width="174"/>
+                    <Button x:Name="button_Copy" Content="Manually Inspect Contents" HorizontalAlignment="Left" Margin="313,221,0,0" VerticalAlignment="Top" Width="164"/>
+                    <Button x:Name="button1" Content="" HorizontalAlignment="Left" Height="26" Margin="666,33,0,0" VerticalAlignment="Top" Width="31"/>
+                    <Button x:Name="button1_Copy" Content="" HorizontalAlignment="Left" Height="26" Margin="666,64,0,0" VerticalAlignment="Top" Width="31"/>
+                    <Button x:Name="button1_Copy1" Content="Browse" HorizontalAlignment="Left" Height="23" Margin="572,5,0,0" VerticalAlignment="Top" Width="89"/>
                 </Grid>
             </TabItem>
             <TabItem HorizontalAlignment="Left" Height="56" VerticalAlignment="Top" Width="211">
@@ -59,8 +105,10 @@
                         <Image x:Name="icons_server_32_png2" Margin="10,0,10,10" Source="icons/settings.png" Stretch="Fill" Height="32" VerticalAlignment="Bottom"/>
                     </Grid>
                 </TabItem.Header>
-                <Grid Background="#FFE5E5E5">
-                    <TextBlock x:Name="textBlock3_Copy1" HorizontalAlignment="Left" Margin="193,47,0,0" Text="Set" VerticalAlignment="Top" FontSize="45" />
+                <Grid Background="White">
+                    <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="23" Margin="0,38,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="567"/>
+                    <Button x:Name="button1_Copy2" Content="Browse" HorizontalAlignment="Left" Height="23" Margin="572,38,0,0" VerticalAlignment="Top" Width="89"/>
+                    <TextBlock x:Name="label_workerstatus_Copy" HorizontalAlignment="Left" Margin="0,1,0,0" Text="Backup Directory" VerticalAlignment="Top" FontSize="24" Foreground="Black" />
                 </Grid>
             </TabItem>
         </TabControl>
